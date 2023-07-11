@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title', 'Detail Komoditas')
+@section('title', 'Commodity Details')
 @section('page-title')
 <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3 w-100   ">
     <h1 class="page-heading d-flex text-dark fw-bold flex-column justify-content-center my-0">
-        Detail Komoditas
+        Commodity Details
     </h1>
     <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap p-0">
         <!--begin::Info-->
@@ -13,13 +13,13 @@
                 <!--begin::Breadcrumb-->
                 <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                     <li class="breadcrumb-item text-muted">
-                        <a href="" class="text-muted">Kelola Data &nbsp;</a>
+                        <a href="" class="text-muted">Manage Data &nbsp;</a>
                     </li>
                     <li class="breadcrumb-item text-muted">
-                        <a href="{{ route('commodity.index') }}" class="text-muted">Data Komoditas</a>
+                        <a href="{{ route('commodity.index') }}" class="text-muted">Commodities Data &nbsp;</a>
                     </li>
                     <li class="breadcrumb-item text-muted">
-                        <a href="{{ route('commodity.show', $commodity->id) }}" class="text-muted">Detail Komoditas &nbsp;</a>
+                        <a href="{{ route('commodity.show', $commodity->id) }}" class="text-muted"> Commodity Details &nbsp;</a>
                     </li>
                 </ul>
                 <!--end::Breadcrumb-->
@@ -46,7 +46,7 @@
         <div class="card-body fs-6 text-gray-700">
             @if ($errors->any())
             <div class="alert alert-danger">
-                <strong>Whoops!</strong> Ada beberapa masalah dengan input Anda.<br><br>
+                <strong>Whoops!</strong> There are some problems with your input.<br><br>
                 <ul>
                     @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -55,7 +55,7 @@
             </div>
             @endif
             <div class="mb-5">
-                <Label class="form-label required fs-6 fw-bold mt-2 mb-3">Cover Komoditas</Label>
+                <Label class="form-label required fs-6 fw-bold mt-2 mb-3">Commodity Photo</Label>
                 <br>
                 <!--begin::Image input-->
                 <div class="image-input image-input-outline" data-kt-image-input="true"
@@ -101,47 +101,47 @@
             </div>
 
             <div class="mb-5">
-                <Label class="form-label required fs-6 fw-bold mt-2 mb-3">Nama Komoditas</Label>
-                <input type="text" class="form-control" name="name" id="name" placeholder="Masukkan nama komoditas"
+                <Label class="form-label required fs-6 fw-bold mt-2 mb-3">Commodity Name</Label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Insert Commodity Name"
                     value="{{$commodity->name}}" disabled>
             </div>
 
             <div class="mb-5">
-                <label class="form-label required">Nama Latin Komoditas</label>
-                <input type="text" class="form-control form-control-solid" name="latin_name" id="latin_name" placeholder="Cth.Clariidae"
+                <label class="form-label required">Commodity Latin Name</label>
+                <input type="text" class="form-control form-control-solid" name="latin_name" id="latin_name" placeholder="Exp.Clariidae"
                     value="{{$commodity->latin_name}}" disabled />
             </div>
 
             <div class="mb-5">
-                <label class="form-label required">Durasi Budidaya</label>
+                <label class="form-label required">Cultivation Duration</label>
 
                 <div class="input-group">
                     <input type="number" class="form-control form-control-solid" name="duration" id="duration"
                         placeholder="0" value="{{$commodity->duration}}" disabled>
                     <select class="input-group-text" name="duration_type" id="duration_type" disabled>
-                        <option value="bulan">Bulan</option>
-                        <option value="hari" selected>Hari</option>
+                        <option value="bulan">Month</option>
+                        <option value="hari" selected>Day</option>
                     </select>
                 </div>
             </div>
 
             <div class="mb-5">
-                <label class="form-label">Harga Jual Per Kilogram</label>
+                <label class="form-label">Selling Price Per Kilogram</label>
 
                 <input type="text" class="form-control form-control-solid" name="selling_price"
-                    id="selling_price" placeholder="Masukkan harga jual" value="{{$commodity->selling_price}}" disabled>
+                    id="selling_price" placeholder="Insert selling price" value="{{$commodity->selling_price}}" disabled>
                 <div class="text-muted">
-                    contoh : Rp 25.000
+                    example : Rp 25.000
                 </div>
             </div>
 
             <div class="mb-5">
                 <div class="row">
                     <div class="col-md-6">
-                        <label class="form-label">Temperatur</label>
+                        <label class="form-label">Temperature</label>
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">Ph Air</label>
+                        <label class="form-label">Water Ph</label>
                     </div>
                 </div>
                 <div class="row">
@@ -180,10 +180,10 @@
             <div class="mb-5">
                 <div class="row">
                     <div class="col-md-6">
-                        <label class="form-label">Ketinggian Air</label>
+                        <label class="form-label">Water Height</label>
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">Jenis Air</label>
+                        <label class="form-label">Water Type</label>
                     </div>
                 </div>
                 <div class="row">
@@ -213,24 +213,24 @@
             </div>
 
             <div class="mb-5">
-                <label class="form-label">Persiapan Media Air</label>
+                <label class="form-label">Water Media Preparation</label>
                 <textarea id="preparation_description" name="preparation_description" class="tox-target">{{{ $commodity->preparation_description }}}</textarea>
             </div>
 
             <div class="mb-5">
-                <label class="form-label">Penebaran Benih</label>
+                <label class="form-label">Seed Spreading</label>
                 <textarea id="seeding_description" name="seeding_description" class="tox-target">{{{ $commodity->seeding_description }}}</textarea>
             </div>
 
             <div class="mb-5">
-                <label class="form-label">Masa Budidaya</label>
+                <label class="form-label">Cultivation Period</label>
                 <textarea id="cutivation_description" name="cutivation_description" class="tox-target">{{{ $commodity->cutivation_description }}}</textarea>
             </div>
 
             <div class="footer d-flex justify-content-end py-10">
                 <div class="d-flex justify-content-end">
                     <button id="cancelButton" type="button"
-                        class="btn btn-light btn-active-light-primary me-3">Batalkan</button>
+                        class="btn btn-light btn-active-light-primary me-3">Cancel</button>
                     <button id="update-commodity" type="submit" class="btn btn-active-primary btn-primary"
                         data-kt-indicator="off">
                         <span class="indicator-label">

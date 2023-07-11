@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title', 'Kelola Data Komoditas')
+@section('title', 'Commodities Data')
 @section('page-title')
 <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3 w-100   ">
     <h1 class="page-heading d-flex text-dark fw-bold flex-column justify-content-center my-0">
-        Kelola Komoditas
+        Commodities Data
     </h1>
     <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap p-0">
         <!--begin::Info-->
@@ -13,10 +13,10 @@
                 <!--begin::Breadcrumb-->
                 <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                     <li class="breadcrumb-item text-muted">
-                        <a href="" class="text-muted">Kelola Data &nbsp;</a>
+                        <a href="" class="text-muted">Manage Data &nbsp;</a>
                     </li>
                     <li class="breadcrumb-item text-muted">
-                        <a href="{{ route('commodity.index') }}" class="text-muted">Data Komoditas</a>
+                        <a href="{{ route('commodity.index') }}" class="text-muted">Commodities Data</a>
                     </li>
                 </ul>
                 <!--end::Breadcrumb-->
@@ -43,7 +43,7 @@
                     </svg>
                 </span>
                 <input type="search" name="search" class="form-control form-control-solid w-350px ps-15" id="search"
-                    placeholder="Cari.." />
+                    placeholder="Search.." />
             </div>
         </div>
         {{-- @if (Auth::user()->role == 1)
@@ -77,9 +77,9 @@
             <thead>
                 <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
                     <th><input class="form-check-input" type="checkbox" disabled></th>
-                    <th>Nama Komoditas</th>
-                    <th>Nama Latin</th>
-                    <th>Durasi Budidaya</th>
+                    <th>Commodity Name</th>
+                    <th>Latin Name</th>
+                    <th>Cultivation Duration</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -111,14 +111,14 @@
                     name: 'name',
                     orderable: true,
                     searchable: true,
-                    width: '20%',
+                    width: '10%',
                 },
                 {
                     data: 'latin_name',
                     name: 'latin_name',
                     orderable: true,
                     searchable: true,
-                    width: '15%'
+                    width: '10%'
                 },
                 {
                     data: 'duration',

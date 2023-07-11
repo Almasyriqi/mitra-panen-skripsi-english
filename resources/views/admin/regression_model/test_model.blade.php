@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title', 'Pengujian Model')
+@section('title', 'Model Testing')
 @section('page-title')
 <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3 w-100   ">
     <h1 class="page-heading d-flex text-dark fw-bold flex-column justify-content-center my-0">
-        Pengujian Model
+        Model Testing
     </h1>
     <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap p-0">
         <!--begin::Info-->
@@ -13,10 +13,10 @@
                 <!--begin::Breadcrumb-->
                 <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                     <li class="breadcrumb-item text-muted">
-                        <a href="" class="text-muted">Model Regresi &nbsp;</a>
+                        <a href="" class="text-muted">Regression Model &nbsp;</a>
                     </li>
                     <li class="breadcrumb-item text-muted">
-                        <a href="{{ route('learning.model.test') }}" class="text-muted">Pengujian Model &nbsp;</a>
+                        <a href="{{ route('learning.model.test') }}" class="text-muted">Model Testing &nbsp;</a>
                     </li>
                 </ul>
                 <!--end::Breadcrumb-->
@@ -38,9 +38,9 @@
 
     <div class="card-body pt-0">
         <div class="mb-5">
-            <Label class="form-label required fs-6 fw-bold mt-2 mb-3">Persentase jumlah data test</Label>
+            <Label class="form-label required fs-6 fw-bold mt-2 mb-3">Percentage of total test data</Label>
             <select class="form-select" data-control="select2"
-                data-placeholder="Pilih persentase jumlah data test yang digunakan" name="test_size" id="test_size">
+                data-placeholder="Select the percentage of test data used" name="test_size" id="test_size">
                 <option></option>
                 <option value="0.05">5%</option>
                 <option value="0.1">10%</option>
@@ -68,7 +68,7 @@
             <Label class="form-label required fs-6 fw-bold mt-2 mb-3">Setting Hyperparameter Regression Model</Label>
             <select class="form-select" data-control="select2" name="setting" id="setting">
                 <option value="default">Default</option>
-                <option value="best">Parameter terbaik</option>
+                <option value="best">Best Parameter</option>
             </select>
         </div>
     </div>
@@ -109,13 +109,13 @@
                 <thead>
                     <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
                         <th>Fish Id</th>
-                        <th>Jumlah Bibit</th>
-                        <th>Berat Bibit</th>
+                        <th>Seedling Count</th>
+                        <th>Seedling Weight</th>
                         <th>Survival Rate (%)</th>
-                        <th>Rata-Rata Berat Ikan (gram/ekor)</th>
-                        <th>Volume Kolam</th>
-                        <th>Total Pemberian Pakan (kg)</th>
-                        <th>Hasil Panen</th>
+                        <th>Average Fish Weight (grams/tail)</th>
+                        <th>Pond Volume</th>
+                        <th>Total Feed Spent (kg)</th>
+                        <th>Harvest Yield</th>
                     </tr>
                 </thead>
                 <tbody class="fw-semibold fs-7 text-gray-600">
@@ -149,13 +149,13 @@
                 <thead>
                     <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
                         <th>Fish Id</th>
-                        <th>Jumlah Bibit</th>
-                        <th>Berat Bibit</th>
+                        <th>Seedling Count</th>
+                        <th>Seedling Weight</th>
                         <th>Survival Rate (%)</th>
-                        <th>Rata-Rata Berat Ikan (gram/ekor)</th>
-                        <th>Volume Kolam</th>
-                        <th>Total Pemberian Pakan (kg)</th>
-                        <th>Hasil Panen</th>
+                        <th>Average Fish Weight (grams/tail)</th>
+                        <th>Pond Volume</th>
+                        <th>Total Feed Spent (kg)</th>
+                        <th>Harvest Yield</th>
                     </tr>
                 </thead>
                 <tbody class="fw-semibold fs-7 text-gray-600">
@@ -169,7 +169,7 @@
     <div class="card-header align-items-center gap-md-5 collapsible cursor-pointer rotate" data-bs-toggle="collapse"
         data-bs-target="#content_compare">
         <div class="card-title">
-            <h2>Perbandingan Hasil Prediksi</h2><br>
+            <h2>Comparison of Prediction Results</h2><br>
         </div>
         <div class="card-toolbar rotate-180">
             <span class="indicator-label">
@@ -184,11 +184,11 @@
     </div>
     <div id="content_compare" class="collapse show">
         <div class="card-body fs-6 text-gray-700 pt-0">
-            <p>Perbandingan nilai y_test atau data aktual dengan hasil prediksi menggunakan regression model.</p>
+            <p>Comparison of y_test values or actual data with predicted results using the regression model.</p>
             <table id="compare-table" class="table align-middle table-row-dashed fs-6 gy-5">
                 <thead>
                     <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
-                        <th>Aktual</th>
+                        <th>Actual</th>
                         <th>Linear Regression</th>
                         <th>Polynomial Regression</th>
                         <th>Random Forest Regression</th>
@@ -206,7 +206,7 @@
     <div class="card-header align-items-center gap-md-5 collapsible cursor-pointer rotate" data-bs-toggle="collapse"
         data-bs-target="#content_graph">
         <div class="card-title">
-            <h2>Grafik Perbandingan Nilai Aktual dan Prediksi</h2><br>
+            <h2>Comparison Chart of Actual and Predicted Values</h2><br>
         </div>
         <div class="card-toolbar rotate-180">
             <span class="indicator-label">
@@ -231,7 +231,7 @@
     <div class="card-header align-items-center gap-md-5 collapsible cursor-pointer rotate" data-bs-toggle="collapse"
         data-bs-target="#content_result">
         <div class="card-title">
-            <h2>Pengujian Akurasi Model</h2>
+            <h2>Model Accuracy Testing</h2>
             <hr>
         </div>
         <div class="card-toolbar rotate-180">
@@ -247,12 +247,12 @@
     </div>
     <div id="content_result" class="collapse show">
         <div class="card-body fs-6 text-gray-700 pt-0">
-            <p>Pengujian akurasi model regresi menggunakan RMSE (Root Mean Square Error) dan MAPE (Mean Absolute
+            <p>Testing the accuracy of the regression model using RMSE (Root Mean Square Error) and MAPE (Mean Absolute
                 Percentage Error).</p>
             <table id="result-table" class="table align-middle table-row-dashed fs-6 gy-5">
                 <thead>
                     <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
-                        <th>Metode</th>
+                        <th>Method</th>
                         <th>RMSE</th>
                         <th>MAPE</th>
                     </tr>
@@ -293,7 +293,7 @@
     const getOptions = (actual_data, linear_data, poly_data, rf_data, svr_data, color) => {
         var options = {
             series: [{
-                    name: 'Data Aktual',
+                    name: 'Actual Data',
                     data: actual_data
                 },
                 {
@@ -389,7 +389,7 @@
                     },
                 },
                 title: {
-                    text: 'Hasil Panen (Kg)',
+                    text: 'Harvest Yield (Kg)',
                     style: {
                         color: color,
                         fontSize: '12px',
@@ -466,7 +466,7 @@
         Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: 'Terjadi kesalahan pada API Python Regression Model, pastikan API sudah berjalan pada server!',
+            text: 'An error occurred in the Python Regression Model API, make sure the API is running on the server!',
         });
     });
 
@@ -753,8 +753,8 @@
                     customClass: {
                         confirmButton: 'btn btn-success',
                     },
-                    title: 'Berhasil testing regression model',
-                    text: 'berhasil',
+                    title: 'Successfully testing regression model',
+                    text: 'success',
                     icon: 'success',
                     confirmButtonText: 'OK'
                 }).then((result) => {
@@ -777,7 +777,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: 'Terjadi kesalahan pada API Python Regression Model, pastikan API sudah berjalan pada server!',
+                        text: 'An error occurred in the Python Regression Model API, make sure the API is running on the server!',
                     });
                 } else {
                     var json = JSON.parse(xhr.responseText);

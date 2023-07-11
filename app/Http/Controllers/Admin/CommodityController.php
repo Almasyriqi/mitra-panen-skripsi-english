@@ -143,14 +143,14 @@ class CommodityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CommodityUpdateRequest $request, $id)
+    public function update(Request $request, $id)
     {
         DB::beginTransaction();
         try {
             $commodity = FishType::find($id);
-            $commodity->name        = $request->name;
-            $commodity->latin_name  = $request->latin_name;
-            $commodity->duration    = $request->duration_type == 'bulan' ? ($request->duration * 31) : $request->duration;
+            // $commodity->name        = $request->name;
+            // $commodity->latin_name  = $request->latin_name;
+            // $commodity->duration    = $request->duration_type == 'bulan' ? ($request->duration * 31) : $request->duration;
 
             if($request->file('cover')){
                 File::delete(public_path("storage/".$commodity->photo));

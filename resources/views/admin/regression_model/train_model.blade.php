@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title', 'Implementasi Model')
+@section('title', 'Model Implementation')
 @section('page-title')
 <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3 w-100   ">
     <h1 class="page-heading d-flex text-dark fw-bold flex-column justify-content-center my-0">
-        Implementasi Model
+        Model Implementation
     </h1>
     <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap p-0">
         <!--begin::Info-->
@@ -13,10 +13,10 @@
                 <!--begin::Breadcrumb-->
                 <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                     <li class="breadcrumb-item text-muted">
-                        <a href="" class="text-muted">Model Regresi &nbsp;</a>
+                        <a href="" class="text-muted">Regression Model &nbsp;</a>
                     </li>
                     <li class="breadcrumb-item text-muted">
-                        <a href="{{ route('learning.model.train') }}" class="text-muted">Implementasi Model &nbsp;</a>
+                        <a href="{{ route('learning.model.train') }}" class="text-muted">Model Implementation &nbsp;</a>
                     </li>
                 </ul>
                 <!--end::Breadcrumb-->
@@ -50,13 +50,13 @@
                 <thead>
                     <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
                         <th>Fish Id</th>
-                        <th>Jumlah Bibit</th>
-                        <th>Berat Bibit</th>
-                        <th>Survival Rate</th>
-                        <th>Rata-Rata Berat Ikan (gram/ekor)</th>
-                        <th>Volume Kolam (m<sup>3</sup>)</th>
-                        <th>Total Pakan (kg)</th>
-                        <th>Hasil Panen</th>
+                        <th>Seedling Count</th>
+                        <th>Seedling Weight</th>
+                        <th>Survival Rate (%)</th>
+                        <th>Average Fish Weight (grams/tail)</th>
+                        <th>Pond Volume</th>
+                        <th>Total Feed Spent (kg)</th>
+                        <th>Harvest Yield</th>
                     </tr>
                 </thead>
                 <tbody class="fw-semibold fs-7 text-gray-600">
@@ -69,7 +69,7 @@
     <div class="card-header align-items-center gap-md-5 collapsible cursor-pointer rotate" data-bs-toggle="collapse"
         data-bs-target="#content_result_test">
         <div class="card-title">
-            <h2>Hasil Pengujian</h2>
+            <h2>Testing Results</h2>
             <hr>
         </div>
         <div class="card-toolbar rotate-180">
@@ -82,20 +82,20 @@
     </div>
     <div id="content_result_test" class="collapse show">
         <div class="card-body fs-6 text-gray-700 pt-0">
-            <p>Berikut ini merupakan tabel hasil pengujian nilai rata-rata RMSE dan MAPE terbaik setiap metode terhadap
-                persentase data uji
-                yang dapat digunakan sebagai acuan dalam memilih metode yang dipilih untuk implementasi model
-                machine learning pada sistem.</p>
-            <p>Untuk nilai RMSE semakin rendah semakin baik, jika nilai mendekati 0 maka hasil prediksi sangat akurat
-                dan mendekati nilai aktual.
-                Untuk nilai MAPE akan disajikan tabel rentang nilai yang berada di bawah tabel hasil pengujian.
+            <p>The following is a table of test results for the average value of the best RMSE and MAPE of each method against
+                percentage of test data
+                which can be used as a reference in choosing the method chosen for implementing the machine learning model on the system.
+                machine learning model implementation on the system.</p>
+            <p>For the RMSE value the lower the better, if the value is close to 0 then the prediction results are very accurate
+                and close to the actual value.
+                For the MAPE value, a table of the value range below the test results table will be presented.
             </p>
             <table class="table align-middle table-row-dashed fs-6 gy-5">
                 <thead>
                     <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
-                        <th>Metode</th>
-                        <th>Rata-Rata RMSE</th>
-                        <th>Rata-Rata MAPE</th>
+                        <th>Method</th>
+                        <th>Average RMSE</th>
+                        <th>Average MAPE</th>
                     </tr>
                 </thead>
                 <tbody class="fw-semibold fs-7 text-gray-600">
@@ -123,34 +123,34 @@
             </table>
 
             <hr>
-            <h4 class="mt-5">Tabel Rentang Nilai MAPE</h4>
+            <h4 class="mt-5">MAPE Value Range Table</h4>
             <table class="table align-middle table-row-dashed fs-6 gy-5">
                 <thead>
                     <tr>
                         <th>Range MAPE</th>
-                        <th>Keterangan</th>
+                        <th>Description</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>< 10%</td>
-                        <td>Kemampuan Model Prediksi Sangat Baik</td>
+                        <td>Excellent Predictive Model Ability</td>
                     </tr>
                     <tr>
                         <td>10 - 20%</td>
-                        <td>Kemampuan Model Prediksi Baik</td>
+                        <td>Good Predictive Model Ability</td>
                     </tr>
                     <tr>
                         <td>20 - 50%</td>
-                        <td>Kemampuan Model Prediksi Layak</td>
+                        <td>Feasible Prediction Model Ability</td>
                     </tr>
                     <tr>
                         <td>> 50%</td>
-                        <td>Kemampuan Model Prediksi Buruk</td>
+                        <td>Poor Predictive Model Ability</td>
                     </tr>
                 </tbody>
             </table>
-            Sumber: (Fachid & Triayudi, 2022)
+            Source: (Fachid & Triayudi, 2022)
         </div>
     </div>
 </div>
@@ -162,8 +162,8 @@
     </div>
 
     <div class="card-body pt-0">
-        <Label class="form-label required fs-6 fw-bold mt-2 mb-3">Metode</Label>
-        <select class="form-select" data-control="select2" data-placeholder="Pilih metode yang digunakan" name="method"
+        <Label class="form-label required fs-6 fw-bold mt-2 mb-3">Method</Label>
+        <select class="form-select" data-control="select2" data-placeholder="Select the method used" name="method"
             id="method">
             <option></option>
             <option value="linear">Linear Regression</option>
@@ -279,8 +279,8 @@
                     customClass: {
                         confirmButton: 'btn btn-success',
                     },
-                    title: 'Berhasil training regression model',
-                    text: 'berhasil',
+                    title: 'Successfully training regression model',
+                    text: 'success',
                     icon: 'success',
                     confirmButtonText: 'OK'
                 });
@@ -291,7 +291,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: 'Terjadi kesalahan pada API Python Regression Model, pastikan API sudah berjalan pada server!',
+                        text: 'An error occurred in the Python Regression Model API, make sure the API is running on the server!',
                     });
                 } else {
                     var json = JSON.parse(xhr.responseText);
