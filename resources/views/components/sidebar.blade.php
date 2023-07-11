@@ -70,7 +70,7 @@
                 {{-- Data Management --}}
                 <div class="menu-item">
                     <div class="menu-content pt-5 pb-2">
-                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">Kelola Data</span>
+                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">Manage Data</span>
                     </div>
                 </div>
 
@@ -91,7 +91,7 @@
                                 </svg>
                             </span>
                         </span>
-                        <span class="menu-title">Kelola User</span>
+                        <span class="menu-title">Manage Users</span>
                     </a>
                 </div>
                 <div class="menu-item">
@@ -188,7 +188,7 @@
                                 </svg>
                             </span>
                         </span>
-                        <span class="menu-title">Data Komoditas</span>
+                        <span class="menu-title">Commodities Data</span>
                     </a>
                 </div>
                 @else
@@ -287,7 +287,7 @@
                                 </svg>
                             </span>
                         </span>
-                        <span class="menu-title">Data Komoditas</span>
+                        <span class="menu-title">Commodities Data</span>
                     </a>
                 </div>
                 <div class="menu-item">
@@ -313,7 +313,7 @@
                                 </svg>
                             </span>
                         </span>
-                        <span class="menu-title">Prediksi Hasil Panen</span>
+                        <span class="menu-title">Harvest Yield Prediction</span>
                     </a>
                 </div>
                 @endif
@@ -324,7 +324,7 @@
                 {{-- Learning Model --}}
                 <div class="menu-item">
                     <div class="menu-content pt-5 pb-2">
-                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">Model Regresi</span>
+                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">Regression Models</span>
                     </div>
                 </div>
                 <div class="menu-item">
@@ -350,7 +350,7 @@
                                 </svg>
                             </span>
                         </span>
-                        <span class="menu-title">Pengujian Model</span>
+                        <span class="menu-title">Model Testing</span>
                     </a>
                 </div>
                 <div class="menu-item">
@@ -380,7 +380,7 @@
                                 </svg>
                             </span>
                         </span>
-                        <span class="menu-title">Implementasi Model</span>
+                        <span class="menu-title">Model Implementation</span>
                     </a>
                 </div>
                 <hr>

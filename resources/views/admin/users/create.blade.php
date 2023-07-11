@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title', 'Tambah Data User')
+@section('title', 'Create User')
 @section('page-title')
 <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3 w-100   ">
     <h1 class="page-heading d-flex text-dark fw-bold flex-column justify-content-center my-0">
-        Tambah User
+        Create User
     </h1>
     <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap p-0">
         <!--begin::Info-->
@@ -13,13 +13,13 @@
                 <!--begin::Breadcrumb-->
                 <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                     <li class="breadcrumb-item text-muted">
-                        <a href="" class="text-muted">Kelola Data &nbsp;</a>
+                        <a href="" class="text-muted">Manage Data &nbsp;</a>
                     </li>
                     <li class="breadcrumb-item text-muted">
-                        <a href="{{ route('user.index') }}" class="text-muted">Kelola User &nbsp;</a>
+                        <a href="{{ route('user.index') }}" class="text-muted">Manage Users &nbsp;</a>
                     </li>
                     <li class="breadcrumb-item text-muted">
-                        <a href="{{ route('user.create') }}" class="text-muted">Tambah User &nbsp;</a>
+                        <a href="{{ route('user.create') }}" class="text-muted">Create User &nbsp;</a>
                     </li>
                 </ul>
                 <!--end::Breadcrumb-->
@@ -38,7 +38,7 @@
         <div class="card-body fs-6 text-gray-700">
             @if ($errors->any())
                 <div class="alert alert-danger">
-                    <strong>Whoops!</strong> Ada beberapa masalah dengan input Anda.<br><br>
+                    <strong>Whoops!</strong> There are some problems with your input.<br><br>
                     <ul>
                         @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -47,16 +47,16 @@
                 </div>
             @endif
             <div class="mb-5">
-                <Label class="form-label required fs-6 fw-bold mt-2 mb-3">Foto Profil</Label>
+                <Label class="form-label required fs-6 fw-bold mt-2 mb-3">Profile picture</Label>
                 <div class="input-group">
-                    <input type="file" accept=".jpg, .jpeg, .png" title="Pilih gambar" class="form-control"
+                    <input type="file" accept=".jpg, .jpeg, .png" title="Choose Picture" class="form-control"
                         name="avatar" id="avatar" required />
                 </div>
             </div>
 
             <div class="mb-5">
-                <Label class="form-label required fs-6 fw-bold mt-2 mb-3">Nama User</Label>
-                <input type="text" class="form-control" name="name" id="name" placeholder="Masukkan nama user"
+                <Label class="form-label required fs-6 fw-bold mt-2 mb-3">User Name</Label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Insert User Name"
                     value="{{old('name')}}" required>
             </div>
 
@@ -74,12 +74,12 @@
                                         d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648Zm-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z" />
                                 </svg>
                             </span>
-                            <input type="text" class="form-control" id="email" name="email" placeholder="Masukkan email"
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Insert email"
                                 required aria-describedby="basic-addon3" value="{{old('email')}}"/>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <Label class="form-label required fs-6 fw-bold mt-2 mb-3">No Hp</Label>
+                        <Label class="form-label required fs-6 fw-bold mt-2 mb-3">Phonenumber</Label>
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon1">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -89,18 +89,18 @@
                                 </svg>
                             </span>
                             <input type="text" class="form-control" name="phone_number" id="phone_number"
-                                placeholder="Masukkan nomor Hp" value="{{old('phone_number')}}" required>
+                                placeholder="Insert phonenumber" value="{{old('phone_number')}}" required>
                         </div>
                         <!--begin::Hint-->
                         <div class="text-muted">
-                            contoh : +6282233445566
+                            example : +6282233445566
                         </div>
                         <!--end::Hint-->
                     </div>
                     <div class="col-md-4">
                         <Label class="form-label required fs-6 fw-bold mt-2 mb-3">Role</Label>
                         <select name="role" id="role" class="form-control" required>
-                            <option value="" selected disabled>Pilih role</option>
+                            <option value="" selected disabled>Choose role</option>
                             <option value="1">Admin</option>
                             <option value="2">Mitra</option>
                         </select>
@@ -124,7 +124,7 @@
                                 <!--begin::Input wrapper-->
                                 <div class="position-relative mb-3">
                                     <input class="form-control form-control-lg form-control-solid" type="password"
-                                        placeholder="Masukkan password" name="password" autocomplete="off" required />
+                                        placeholder="Insert password" name="password" autocomplete="off" required />
 
                                     <!--begin::Visibility toggle-->
                                     <span
@@ -151,7 +151,7 @@
 
                             <!--begin::Hint-->
                             <div class="text-muted">
-                                Gunakan 8 karakter atau lebih dengan campuran huruf, angka & simbol.
+                                Use 8 or more characters with a mix of letters, numbers & symbols.
                             </div>
                             <!--end::Hint-->
                         </div>
@@ -164,14 +164,14 @@
                             <div class="mb-1">
                                 <!--begin::Label-->
                                 <label class="form-label required fw-semibold fs-6 mb-2">
-                                    Konfirmasi Password
+                                    Confirm Password
                                 </label>
                                 <!--end::Label-->
 
                                 <!--begin::Input wrapper-->
                                 <div class="position-relative mb-3">
                                     <input class="form-control form-control-lg form-control-solid" type="password"
-                                        placeholder="Masukkan konfirmasi password" name="password_confirmation"
+                                        placeholder="Insert confirm password" name="password_confirmation"
                                         autocomplete="off" required />
 
                                     <!--begin::Visibility toggle-->
@@ -208,7 +208,7 @@
                     <button id="save-user" type="submit" class="btn btn-active-primary btn-primary"
                         data-kt-indicator="off">
                         <span class="indicator-label">
-                            Tambah
+                            Create
                         </span>
                     </button>
                 </div>

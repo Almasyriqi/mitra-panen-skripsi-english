@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title', 'Kelola Data User')
+@section('title', 'Manage Users')
 @section('page-title')
 <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3 w-100   ">
     <h1 class="page-heading d-flex text-dark fw-bold flex-column justify-content-center my-0">
-        Kelola User
+        Manage Users
     </h1>
     <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap p-0">
         <!--begin::Info-->
@@ -13,10 +13,10 @@
                 <!--begin::Breadcrumb-->
                 <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                     <li class="breadcrumb-item text-muted">
-                        <a href="" class="text-muted">Kelola Data &nbsp;</a>
+                        <a href="" class="text-muted">Manage Data &nbsp;</a>
                     </li>
                     <li class="breadcrumb-item text-muted">
-                        <a href="{{ route('user.index') }}" class="text-muted">Kelola User &nbsp;</a>
+                        <a href="{{ route('user.index') }}" class="text-muted">Manage Users &nbsp;</a>
                     </li>
                 </ul>
                 <!--end::Breadcrumb-->
@@ -43,7 +43,7 @@
                     </svg>
                 </span>
                 <input type="search" name="search" class="form-control form-control-solid w-250px ps-15" id="search"
-                    placeholder="Cari.." />
+                    placeholder="Search.." />
             </div>
         </div>
         <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
@@ -63,7 +63,7 @@
                 data-kt-menu="true">
                 <!--begin::Menu item-->
                 <div class="menu-item px-3">
-                    <div class="menu-content fs-6 text-dark fw-bold px-3 py-4">Pilihan Filter</div>
+                    <div class="menu-content fs-6 text-dark fw-bold px-3 py-4">Filters Options</div>
                 </div>
                 <!--end::Menu item-->
 
@@ -73,13 +73,13 @@
 
                 <!--begin::Menu item-->
                 <div class="menu-item px-3 mb-3">
-                    Jenis Akun
+                    Account Type
                 </div>
                 <div class="menu-item px-3 mb-2">
                     <div class="form-check form-check-custom form-check-solid">
                         <input class="form-check-input" type="checkbox" name="filter_semua" checked id="filter_semua"/>
                         <label class="form-check-label" for="flexCheckDefault">
-                            Semua
+                            All
                         </label>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                         <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor"></rect>
                     </svg>
                 </span>
-                Tambah
+                Create
             </a>
             <a type="button" class="btn btn-danger ms-2 d-none" id="delete-confirm">
                 <span class="svg-icon svg-icon-3">
@@ -120,7 +120,7 @@
                             stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </span>
-                Hapus
+                Delete
             </a>
 
         </div>
@@ -130,11 +130,10 @@
             <thead>
                 <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
                     <th><input class="form-check-input" type="checkbox" disabled></th>
-                    <th>Nama User</th>
-                    <th>Tanggal Bergabung</th>
+                    <th>User Name</th>
+                    <th>Joined Since</th>
                     <th>Role</th>
-                    <th>No HP</th>
-                    <th>Jumlah Kolam</th>
+                    <th>Phonenumber</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -186,13 +185,6 @@
                     data: 'phonenumber',
                     name: 'phonenumber',
                     orderable: false,
-                    searchable: false,
-                    width: '15%'
-                },
-                {
-                    data: 'pondsAmount',
-                    name: 'pondsAmount',
-                    orderable: true,
                     searchable: false,
                     width: '15%'
                 },
@@ -277,7 +269,7 @@
                 user_id.push($(obj).val());
             });
 
-            var title_modal = user_id.length + ' User Akan Dihapus';
+            var title_modal = user_id.length + ' Users Will Be Deleted';
 
             Swal.fire({
                 customClass: {
@@ -285,10 +277,10 @@
                     cancelButton: 'btn btn-light'
                 },
                 title: title_modal,
-                text: "Apakah Anda yakin ingin menghapus user yang diseleksi? Data yang telah terhapus tidak dapat dipulihkan.",
+                text: "Are you sure you want to delete the selected users? Deleted data cannot be recovered.",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Hapus',
+                confirmButtonText: 'Delete',
             }).then((result) => {
                 if (result.isConfirmed) {
                     e.preventDefault();
@@ -306,8 +298,8 @@
                                 customClass: {
                                     confirmButton: 'btn btn-success',
                                 },
-                                title: 'User telah Dihapus',
-                                text: 'User yang diseleksi berhasil dihapus',
+                                title: 'User has been Deleted',
+                                text: 'The selected user was successfully deleted',
                                 icon: 'success',
                                 confirmButtonText: 'OK'
                             }).then((hasil) => {

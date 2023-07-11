@@ -32,7 +32,7 @@
         <div class="card-body fs-6 text-gray-700">
             @if ($errors->any())
             <div class="alert alert-danger">
-                <strong>Whoops!</strong> Ada beberapa masalah dengan input Anda.<br><br>
+                <strong>Whoops!</strong> There are some problems with your input.<br><br>
                 <ul>
                     @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -41,7 +41,7 @@
             </div>
             @endif
             <div class="mb-5">
-                <Label class="form-label required fs-6 fw-bold mt-2 mb-3">Foto Profil</Label>
+                <Label class="form-label required fs-6 fw-bold mt-2 mb-3">Profile Photo</Label>
                 <br>
                 <!--begin::Image input-->
                 <div class="image-input image-input-outline" data-kt-image-input="true"
@@ -87,15 +87,15 @@
             </div>
 
             <div class="mb-5">
-                <Label class="form-label required fs-6 fw-bold mt-2 mb-3">Nama User</Label>
-                <input type="text" class="form-control" name="name" id="name" placeholder="Masukkan nama user"
+                <Label class="form-label required fs-6 fw-bold mt-2 mb-3">User Name</Label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Insert User Name"
                     value="{{Auth::user()->name}}" required>
             </div>
 
             <div class="mb-5">
                 <div class="row">
                     <div class="col-md-6">
-                        <Label class="form-label fs-6 fw-bold mt-2 mb-3">Tanggal Bergabung</Label>
+                        <Label class="form-label fs-6 fw-bold mt-2 mb-3">Joined Since</Label>
                         <div class="input-group">
                             <i class="bi bi-calendar-fill input-group-text"></i>
                             <input type="text" class="form-control" name="joined_since" id="joined_since"
@@ -124,7 +124,7 @@
             <div class="mb-5">
                 <div class="row">
                     <div class="col-md-6">
-                        <Label class="form-label required fs-6 fw-bold mt-2 mb-3">No Hp</Label>
+                        <Label class="form-label required fs-6 fw-bold mt-2 mb-3">Phonenumber</Label>
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon1">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -138,7 +138,7 @@
                         </div>
                         <!--begin::Hint-->
                         <div class="text-muted">
-                            contoh : +6282233445566
+                            Example : +6282233445566
                         </div>
                         <!--end::Hint-->
                     </div>
