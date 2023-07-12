@@ -645,7 +645,7 @@
                 placeholder_select = 'Enter the volume of the pond to be cultivated';
                 break;
             case 'total_fish_count':
-                placeholder_select = 'Enter the amount of fish to be sold in 1kg';
+                placeholder_select = 'Enter average fish weight per tail at harvest';
                 break;
             default:
                 placeholder_select = 'Choose';
