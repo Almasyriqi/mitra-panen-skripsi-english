@@ -95,7 +95,7 @@ class UserController extends Controller
             $user->password     = Hash::make($request->password);
             $user->save();
             DB::commit();
-            return redirect()->route('user.index')->with('success', 'Berhasil menambahkan user baru');
+            return redirect()->route('user.index')->with('success', 'Successfully add a new user');
         } catch (\Throwable $th) {
             DB::rollback();
             return back()->with('toast_error', $th->getMessage());
@@ -150,7 +150,7 @@ class UserController extends Controller
             $user->save();
 
             DB::commit();
-            return redirect()->route('user.show', $user->id)->with('success', 'Berhasil update data user');
+            return redirect()->route('user.show', $user->id)->with('success', 'Successfully update user data');
         } catch (\Throwable $th) {
             DB::rollback();
             return back()->with('toast_error', $th->getMessage());
@@ -182,7 +182,7 @@ class UserController extends Controller
             return response()->json([
                 'status' => '200',
                 'users' => $users,
-                'message' => "user berhasil dihapus",
+                'message' => "user successfully deleted",
             ], 200);
         } catch (\Throwable $th) {
             DB::rollback();

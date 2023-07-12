@@ -33,19 +33,19 @@ class UserStoreRequest extends FormRequest
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'avatar.required'            => 'Foto profil harus diupload.',
-            'name.required'              => 'Nama harus diisi.',
-            'email.required'             => 'Email harus diisi.',
-            'email.email'                => 'Format email salah.',
-            'email.unique'               => 'Email yang Anda masukkan telah terdaftar',
-            'phone_number.required'      => 'No Hp harus diisi.',
-            'phone_number.unique'        => 'No Hp yang Anda masukkan telah terdaftar',
-            'role.required'              => 'Role harus diisi.',
-            'password.required'          => 'Password harus diisi.',
-            'password.confirmed'         => 'Konfirmasi password tidak sesuai.',
-        ];
-    }
+    // public function messages()
+    // {
+    //     return [
+    //         'avatar.required'            => 'Foto profil harus diupload.',
+    //         'name.required'              => 'Nama harus diisi.',
+    //         'email.required'             => 'Email harus diisi.',
+    //         'email.email'                => 'Format email salah.',
+    //         'email.unique'               => 'Email yang Anda masukkan telah terdaftar',
+    //         'phone_number.required'      => 'No Hp harus diisi.',
+    //         'phone_number.unique'        => 'No Hp yang Anda masukkan telah terdaftar',
+    //         'role.required'              => 'Role harus diisi.',
+    //         'password.required'          => 'Password harus diisi.',
+    //         'password.confirmed'         => 'Konfirmasi password tidak sesuai.',
+    //     ];
+    // }
 }

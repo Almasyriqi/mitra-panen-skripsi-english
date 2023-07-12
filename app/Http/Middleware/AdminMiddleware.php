@@ -20,7 +20,7 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         if(Auth::user()->role != User::ADMIN){
-            alert()->error('Error',"Maaf Anda tidak memiliki akses sebagai Admin!");
+            alert()->error('Error',"Sorry you don't have access as an Admin!");
             return back();
         }
         return $next($request);

@@ -181,7 +181,7 @@ class CommodityController extends Controller
             $commodity->cutivation_description  = $request->cutivation_description;
             $commodity->save();
             DB::commit();
-            return redirect()->route('commodity.show', $commodity->id)->with('success', 'Berhasil update data komoditas');
+            return redirect()->route('commodity.show', $commodity->id)->with('success', 'Successfully update commodity data');
         } catch (\Throwable $th) {
             DB::rollback();
             return back()->with('toast_error', $th->getMessage());

@@ -81,7 +81,7 @@ class PredictionController extends Controller
             $fish_count = [7, 8, 9, 10];
             foreach ($fish_count as $f) {
                 $weight = round(1000 / $f, 1);
-                $text = strval($weight) . " gram (" . strval($f) . " ekor dalam 1kg penjualan)";
+                $text = strval($weight) . " gram (" . strval($f) . " tails in 1kg sales)";
                 $data[] = [
                     'id' => $f,
                     'text' => $text
@@ -91,7 +91,7 @@ class PredictionController extends Controller
             $fish_count = [2, 3, 4];
             foreach ($fish_count as $f) {
                 $weight = round(1000 / $f, 1);
-                $text = strval($weight) . " gram (" . strval($f) . " ekor dalam 1kg penjualan)";
+                $text = strval($weight) . " gram (" . strval($f) . " tails in 1kg sales)";
                 $data[] = [
                     'id' => $f,
                     'text' => $text

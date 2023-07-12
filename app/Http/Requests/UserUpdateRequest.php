@@ -31,14 +31,14 @@ class UserUpdateRequest extends FormRequest
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'name.required'              => 'Nama harus diisi.',
-            'email.required'             => 'Email harus diisi.',
-            'email.email'                => 'Format email salah.',
-            'phone_number.required'      => 'No Hp harus diisi.',
-            'role.required'              => 'Role harus diisi.',
-        ];
-    }
+    // public function messages()
+    // {
+    //     return [
+    //         'name.required'              => 'Nama harus diisi.',
+    //         'email.required'             => 'Email harus diisi.',
+    //         'email.email'                => 'Format email salah.',
+    //         'phone_number.required'      => 'No Hp harus diisi.',
+    //         'role.required'              => 'Role harus diisi.',
+    //     ];
+    // }
 }
