@@ -10,7 +10,7 @@
             <h1 class="fw-bolder">Reset Password</h1>
         </div>
         <div class="text-center mb-4">
-            <div class="text-muted">Silahkan masukkan password baru Anda</div>
+            <div class="text-muted">Please enter your new password</div>
         </div>
     </div>
     <form method="POST" action="{{ route('password.update') }}" class="form w-100">
@@ -20,7 +20,7 @@
         <div class="fv-row mb-5">
             <label class="form-label fs-6 fw-bolder text-dark">Email</label>
             <input class="form-control form-control-lg @error('email') is-invalid @enderror" type="text" name="email"
-                autocomplete="off" placeholder="Masukkan Email" value="{{ $email ?? old('email') }}" />
+                autocomplete="off" placeholder="Insert Email" value="{{ $email ?? old('email') }}" />
             @error('email')
             <div class="invalid-feedback">
                 {{ $message }}
@@ -40,7 +40,7 @@
                 <!--begin::Input wrapper-->
                 <div class="position-relative mb-3">
                     <input class="form-control form-control-lg @error('password') is-invalid @enderror" type="password"
-                    name="password" autocomplete="off" placeholder="Masukkan password anda" />
+                    name="password" autocomplete="off" placeholder="Insert your password" />
 
                     <!--begin::Visibility toggle-->
                     <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"
@@ -66,14 +66,14 @@
             <div class="mb-1">
                 <!--begin::Label-->
                 <label class="form-label fs-6 fw-bolder text-dark">
-                    Konfirmasi Password
+                    Confirm Password
                 </label>
                 <!--end::Label-->
 
                 <!--begin::Input wrapper-->
                 <div class="position-relative mb-3">
                     <input class="form-control form-control-lg @error('password_confirmation') is-invalid @enderror" type="password"
-                    name="password_confirmation" autocomplete="off" placeholder="Masukkan konfirmasi password" />
+                    name="password_confirmation" autocomplete="off" placeholder="Enter confirmation password" />
 
                     <!--begin::Visibility toggle-->
                     <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"

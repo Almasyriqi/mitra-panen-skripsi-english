@@ -1,16 +1,16 @@
 <table>
     <thead>
         <tr>
-            <th rowspan="2">Hari Ke-</th>
+            <th rowspan="2">Day</th>
             @foreach ($collection["sr"] as $item)
             <th colspan="3">Survival Rate {{$item}}</th>
             @endforeach
         </tr>
         <tr>
             @for ($i = 0; $i < 5; $i++) 
-                <th>Rata-Rata Berat (g/ekor)</th>
-                <th>Pemberian Pakan (kg)</th>
-                <th>Total Berat Ikan (kg)</th>
+                <th>Average Weight ( g/tail)</th>
+                <th>Feed Spent (kg)</th>
+                <th>Total Fish Weight (kg)</th>
             @endfor
         </tr>
     </thead>

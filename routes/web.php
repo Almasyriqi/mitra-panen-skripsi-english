@@ -3,13 +3,9 @@
 use App\Http\Controllers\Admin\CommodityController;
 use App\Http\Controllers\Admin\RegressionModelController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Mitra\HarvestFishController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Mitra\OperationCostsController;
-use App\Http\Controllers\Mitra\PondController;
 use App\Http\Controllers\Mitra\PredictionController;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*

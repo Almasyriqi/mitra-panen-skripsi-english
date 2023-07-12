@@ -7,10 +7,10 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header justify-content-center">
-                        <div class="card-title"><h1>Selamat Datang di Sistem Prediksi Hasil Panen Budidaya Perikanan</h1></div>
+                        <div class="card-title"><h1>Welcome to the Aquaculture Harvest Yield Prediction System</h1></div>
                     </div>
                     <div class="card-body">
-                        <h4 class="text-center">Silahkan pilih menu yang ada di sidebar, untuk prediksi dapat memilih menu prediksi hasil panen</h4>
+                        <h4 class="text-center">Please select the menu on the sidebar, for prediction, you can select the harvest prediction menu.</h4>
                     </div>
                 </div>
             </div>
@@ -20,7 +20,7 @@
                 <div class="card shadow-sm bg-light-secondary h-70">
                     <div class="card-header">
                         <div class="card-title">
-                            <h3>Tingkat Kelangsungan Hidup Komoditas (%)</h3>
+                            <h3>Commodity Survival Rate (%)</h3>
                         </div>
                     </div>
                     <div class="card-body">
@@ -32,7 +32,7 @@
                 <div class="card shadow-sm bg-light-secondary">
                     <div class="card-header">
                         <div class="card-title">
-                            <h3>Rata-Rata Hasil Panen Setiap Komoditas (kg)</h3>
+                            <h3>Average Harvest Yield of Each Commodity (kg)</h3>
                         </div>
                     </div>
                     <div class="card-body">
@@ -184,7 +184,7 @@
     var chart = new ApexCharts(element, getOptions(getColorMode(KTThemeMode.getMode()), [], [], 'Survival Rate (%)'));
     chart.render();
 
-    var chart_harvest = new ApexCharts(element_harvest, getOptions(getColorMode(KTThemeMode.getMode()), [], [], 'Rata-Rata Hasil Panen (kg)'));
+    var chart_harvest = new ApexCharts(element_harvest, getOptions(getColorMode(KTThemeMode.getMode()), [], [], 'Average Harvest Yield (kg)'));
     chart_harvest.render();
 
     const getData = (color) =>{
@@ -192,7 +192,7 @@
 
         $.getJSON(url, function(response) {
             chart.updateOptions(getOptions(color, response.series, response.fish_type, 'Survival Rate (%)'));
-            chart_harvest.updateOptions(getOptions(color, response.series_harvest, response.fish_type, 'Rata-Rata Hasil Panen (kg)'));
+            chart_harvest.updateOptions(getOptions(color, response.series_harvest, response.fish_type, 'Average Harvest Yield (kg)'));
             $('.apexcharts-menu-item').css({color: "black"});
         });
     }
