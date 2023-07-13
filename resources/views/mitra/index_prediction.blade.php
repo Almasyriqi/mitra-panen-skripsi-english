@@ -67,7 +67,7 @@
                     </select>
                 </div>
                 <div class="col-md-6">
-                    <Label class="form-label required fs-6 fw-bold mt-2 mb-3">Average Fish Weight per Tail at Harvest</Label>
+                    <Label class="form-label required fs-6 fw-bold mt-2 mb-3">Average Weight of Fish per Tail to be sold</Label>
                     <select type="total_fish_count" name="total_fish_count" class="form-control" id="total_fish_count"
                         aria-describedby="total_fish_count">
                     </select>
@@ -645,7 +645,7 @@
                 placeholder_select = 'Enter the volume of the pond to be cultivated';
                 break;
             case 'total_fish_count':
-                placeholder_select = 'Enter average fish weight per tail at harvest';
+                placeholder_select = 'Enter the average weight of fish per fish to be sold';
                 break;
             default:
                 placeholder_select = 'Choose';
