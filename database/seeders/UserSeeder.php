@@ -30,6 +30,15 @@ class UserSeeder extends Seeder
             'phone_number'  => '6282213589072',
             'email'         => 'ikramalmasyriqi@gmail.com',
             'password'      => Hash::make('12345678'),
+            'role'          => 1,
+            'created_at'    => '2023-02-17'
+        ]);
+
+        DB::table('users')->insert([
+            'name'          => 'Mitra',
+            'phone_number'  => '6282255779944',
+            'email'         => 'ikramalmasyriqi@gmail.com',
+            'password'      => Hash::make('12345678'),
             'role'          => 2,
             'created_at'    => '2023-02-17'
         ]);
