@@ -689,6 +689,9 @@
             success: function (response) {
                 var guide_desc = "Contains a guide to "+ fish_name +" cultivation";
                 $('#guide_desc').text(guide_desc);
+                $('#preparation').text("");
+                $('#seeding').text("");
+                $('#cultivation').text("");
                 $('#preparation').append(response.preparation);
                 $('#seeding').append(response.seeding);
                 $('#cultivation').append(response.cultivation);
