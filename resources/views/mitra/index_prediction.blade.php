@@ -62,13 +62,13 @@
             <div class="row">
                 <div class="col-md-6">
                     <Label class="form-label required fs-6 fw-bold mt-2 mb-3">Pond Volume (m<sup>3</sup>)</Label>
-                    <select type="pond_volume" name="pond_volume" class="form-control" id="pond_volume"
+                    <select type="pond_volume" name="pond_volume" class="form-select" data-control="select2" id="pond_volume"
                         aria-describedby="pond_volume">
                     </select>
                 </div>
                 <div class="col-md-6">
                     <Label class="form-label required fs-6 fw-bold mt-2 mb-3">Average Weight of Fish per Tail to be sold</Label>
-                    <select type="total_fish_count" name="total_fish_count" class="form-control" id="total_fish_count"
+                    <select type="total_fish_count" name="total_fish_count" class="form-select" data-control="select2" id="total_fish_count"
                         aria-describedby="total_fish_count">
                     </select>
                 </div>
@@ -232,9 +232,21 @@
             <p>The following is a simulation of aquaculture feeding in kilograms per day and
                 average cultured weight per head in grams. Feeding for aquaculture is recommended 2-3 times a day
                 with the total given according to what is in the simulation table. There are several simulations
-                based on survival rate and yield prediction.
+                based on survival rate and yield prediction. In this section there are also display settings, 
+                namely a simple display that only contains a brief feeding simulation and a complete display that 
+                contains a complete simulation of feeding, cultivation weight, and simulation charts.
             </p>
-            <a href="{{route('excel.download')}}" class="btn btn-primary mb-5">Download Full Simulation Data Excel</a>
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="{{route('excel.download')}}" class="btn btn-primary mb-5">Download Full Simulation Data Excel</a>
+                </div>
+                <div class="col-md-3">
+                    <select type="display" name="display" class="form-select" data-control="select2" id="display" aria-describedby="display">
+                        <option value="simple">Simple Display</option>
+                        <option value="full">Complete Display</option>
+                    </select>
+                </div>
+            </div>
             <hr class="mb-5">
             <div class="accordion" id="kt_accordion_2">
                 @for ($i = 1; $i < 5; $i++)
@@ -251,20 +263,34 @@
                         <div class="accordion-body">
                             <p id="tfs-{{$i}}" class="mb-0">Total Feeding During Cultivation : </p>
                             <p id="prediction-{{$i}}" class="pt-0">Harvest Yield Prediction : </p>
-                            <table id="simulation-table-{{$i}}" class="table align-middle table-row-dashed fs-6 gy-5">
-                                <thead>
-                                    <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
-                                        <th>Day</th>
-                                        <th>Average Weight (gram/tail)</th>
-                                        <th>Feed Spent (kg)</th>
-                                        <th>Total Fish Weight (kg)</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="fw-semibold fs-7 text-gray-600">
-                                </tbody>
-                            </table>
+                            <div class="simple_table">
+                                <table id="simple-table-{{$i}}" class="table align-middle table-row-dashed fs-6 gy-5">
+                                    <thead>
+                                        <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
+                                            <th>Cultivation Period (Day-)</th>
+                                            <th>Feed spent (kg/day)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="fw-semibold fs-7 text-gray-600">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="simulation_table">
+                                <table id="simulation-table-{{$i}}" class="table align-middle table-row-dashed fs-6 gy-5">
+                                    <thead>
+                                        <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
+                                            <th>Day</th>
+                                            <th>Average Weight (gram/tail)</th>
+                                            <th>Feed Spent (kg)</th>
+                                            <th>Total Fish Weight (kg)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="fw-semibold fs-7 text-gray-600">
+                                    </tbody>
+                                </table>
+                            </div>
                             <hr class="mt-5 mb-5">
-                            <div class="row mt-5">
+                            <div class="row mt-5" id="chart_{{$i}}">
                                 <div class="col-md-6">
                                     <div id="chart_weight_{{$i}}"></div>
                                 </div>
@@ -327,11 +353,14 @@
                 },
             ],
             scrollX: true,
+            "ordering": false
         });
 
-    // setup datatable simulation
+    // setup datatable simulation and simple
     var datatable_simulations = []
+    var datatable_simple_arr = []
     for (let index = 1; index <= 5; index++) { 
+        // datatable simulation
         var datasource_simulation = "table_simulation_" + index;
         var datatable_simulation = $('#simulation-table-'+index).DataTable({
             ajax: {
@@ -378,14 +407,53 @@
                 },
             ],
             scrollX: true,
+            "ordering": false
         });
         datatable_simulations.push(datatable_simulation);
+
+        // datatable simple
+        var datasource_simple = "table_simple_" + index;
+        var datatable_simple = $('#simple-table-'+index).DataTable({
+            ajax: {
+                url: route_result,
+                dataSrc: datasource_simple,
+                beforeSend: function() {
+                    $(".card-toolbar").attr("data-kt-indicator", "on"); // Tampilkan elemen loading
+                },
+                complete: function() {
+                    $('.card-toolbar').removeAttr('data-kt-indicator'); // Sembunyikan elemen loading setelah permintaan selesai
+                }
+            },
+            dom: 'Brtip',
+            buttons: [
+                'csv', 'excel', 'print'
+            ],
+            columns: [{
+                    data: 'day_range',
+                    name: 'day_range',
+                    orderable: false,
+                    searchable: false,
+                    width: '10%'
+                },
+                {
+                    data: 'feed_spent',
+                    name: 'feed_spent',
+                    orderable: false,
+                    searchable: false,
+                    width: '10%',
+                },
+            ],
+            scrollX: true,
+            "ordering": false
+        });
+        datatable_simple_arr.push(datatable_simple);
     }
 
     // function for reload datatable simulation
     const reload_datatable_simulation = () =>{
         for (let i = 0; i < datatable_simulations.length; i++) {
             datatable_simulations[i].ajax.reload();
+            datatable_simple_arr[i].ajax.reload();
         }
     }
 
@@ -596,11 +664,30 @@
         });
     }
 
+    // function for check status display simulation
+    const checkDisplay = () =>{
+        if ($('#display').val() == 'simple') {
+            for (let index = 1; index < 5; index++) {
+                $('#chart_'+index).hide();
+            }
+            $('.simulation_table').hide();
+            $('.simple_table').show();
+        } else {
+            for (let index = 1; index < 5; index++) {
+                $('#chart_'+index).show();
+            }
+            $('.simulation_table').show();
+            $('.simple_table').hide();
+        }
+        reload_datatable_simulation();
+    }
+
     var mode = KTThemeMode.getMode();
     $(document).ready(function(){
         $('#result_card').hide();
         $('#guide_card').hide();
         $('#simulation_card').hide();
+        checkDisplay();
         onChangeSelect('{{ route("pond.volume") }}', $('#fish_type').val(), 'pond_volume', $('#seed_amount').val());
         onChangeSelect('{{ route("fish.count") }}', $('#fish_type').val(), 'total_fish_count', $('#seed_amount').val());
         getGraphData(getColorMode(mode));
@@ -636,6 +723,11 @@
             text: text,
         });
     }
+
+    // on change display
+    $('#display').on('change', function(){
+        checkDisplay();
+    });
 
     // function get data when select2 changes
     function onChangeSelect(url, fish_id, name, seed_amount) {
