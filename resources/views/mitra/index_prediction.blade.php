@@ -362,8 +362,8 @@
         });
 
     // setup datatable simulation and simple
-    var datatable_simulations = []
-    var datatable_simple_arr = []
+    var datatable_simulations = [];
+    var datatable_simple_arr = [];
     for (let index = 1; index <= 5; index++) { 
         // datatable simulation
         var datasource_simulation = "table_simulation_" + index;
