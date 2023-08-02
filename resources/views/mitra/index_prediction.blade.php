@@ -458,7 +458,7 @@
     const reload_datatable_simulation = () =>{
         for (let i = 0; i < datatable_simulations.length; i++) {
             datatable_simulations[i].ajax.reload();
-            datatable_simple_arr[i].ajax.reload();
+            // datatable_simple_arr[i].ajax.reload();
         }
     }
 
