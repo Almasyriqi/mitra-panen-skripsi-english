@@ -232,20 +232,21 @@
             <p>The following is a simulation of aquaculture feeding in kilograms per day and
                 average cultured weight per head in grams. Feeding for aquaculture is recommended 2-3 times a day
                 with the total given according to what is in the simulation table. There are several simulations
-                based on survival rate and yield prediction. In this section there are also display settings, 
+                based on survival rate and yield prediction. 
+                {{-- In this section there are also display settings, 
                 namely a simple display that only contains a brief feeding simulation and a complete display that 
-                contains a complete simulation of feeding, cultivation weight, and simulation charts.
+                contains a complete simulation of feeding, cultivation weight, and simulation charts. --}}
             </p>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <a href="{{route('excel.download')}}" class="btn btn-primary mb-5">Download Full Simulation Data Excel</a>
                 </div>
-                <div class="col-md-3">
+                {{-- <div class="col-md-3">
                     <select type="display" name="display" class="form-select" data-control="select2" id="display" aria-describedby="display">
                         <option value="simple">Simple Display</option>
                         <option value="full">Complete Display</option>
                     </select>
-                </div>
+                </div> --}}
             </div>
             <hr class="mb-5">
             <div class="accordion" id="kt_accordion_2">
@@ -263,7 +264,7 @@
                         <div class="accordion-body">
                             <p id="tfs-{{$i}}" class="mb-0">Total Feeding During Cultivation : </p>
                             <p id="prediction-{{$i}}" class="pt-0">Harvest Yield Prediction : </p>
-                            <div class="simple_table">
+                            {{-- <div class="simple_table">
                                 <table id="simple-table-{{$i}}" class="table align-middle table-row-dashed fs-6 gy-5">
                                     <thead>
                                         <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
@@ -274,7 +275,7 @@
                                     <tbody class="fw-semibold fs-7 text-gray-600">
                                     </tbody>
                                 </table>
-                            </div>
+                            </div> --}}
                             <div class="simulation_table">
                                 <table id="simulation-table-{{$i}}" class="table align-middle table-row-dashed fs-6 gy-5">
                                     <thead>
@@ -312,11 +313,15 @@
 <script>
     // error handle when API Python not work
     $(document).ajaxError(function(event, jqxhr, settings, thrownError) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'An error occurred in the Python Regression Model API, make sure the API is running on the server!',
-        });
+        if (jqxhr.statusText == "abort") {
+            console.log("Request canceled");
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Terjadi kesalahan pada API Python Regression Model, pastikan API sudah berjalan pada server!',
+            });
+        }
     });
 
     // setup datatable result implements
@@ -412,41 +417,41 @@
         datatable_simulations.push(datatable_simulation);
 
         // datatable simple
-        var datasource_simple = "table_simple_" + index;
-        var datatable_simple = $('#simple-table-'+index).DataTable({
-            ajax: {
-                url: route_result,
-                dataSrc: datasource_simple,
-                beforeSend: function() {
-                    $(".card-toolbar").attr("data-kt-indicator", "on"); // Tampilkan elemen loading
-                },
-                complete: function() {
-                    $('.card-toolbar').removeAttr('data-kt-indicator'); // Sembunyikan elemen loading setelah permintaan selesai
-                }
-            },
-            dom: 'Brtip',
-            buttons: [
-                'csv', 'excel', 'print'
-            ],
-            columns: [{
-                    data: 'day_range',
-                    name: 'day_range',
-                    orderable: false,
-                    searchable: false,
-                    width: '10%'
-                },
-                {
-                    data: 'feed_spent',
-                    name: 'feed_spent',
-                    orderable: false,
-                    searchable: false,
-                    width: '10%',
-                },
-            ],
-            scrollX: true,
-            "ordering": false
-        });
-        datatable_simple_arr.push(datatable_simple);
+        // var datasource_simple = "table_simple_" + index;
+        // var datatable_simple = $('#simple-table-'+index).DataTable({
+        //     ajax: {
+        //         url: route_result,
+        //         dataSrc: datasource_simple,
+        //         beforeSend: function() {
+        //             $(".card-toolbar").attr("data-kt-indicator", "on"); // Tampilkan elemen loading
+        //         },
+        //         complete: function() {
+        //             $('.card-toolbar').removeAttr('data-kt-indicator'); // Sembunyikan elemen loading setelah permintaan selesai
+        //         }
+        //     },
+        //     dom: 'Brtip',
+        //     buttons: [
+        //         'csv', 'excel', 'print'
+        //     ],
+        //     columns: [{
+        //             data: 'day_range',
+        //             name: 'day_range',
+        //             orderable: false,
+        //             searchable: false,
+        //             width: '10%'
+        //         },
+        //         {
+        //             data: 'feed_spent',
+        //             name: 'feed_spent',
+        //             orderable: false,
+        //             searchable: false,
+        //             width: '10%',
+        //         },
+        //     ],
+        //     scrollX: true,
+        //     "ordering": false
+        // });
+        // datatable_simple_arr.push(datatable_simple);
     }
 
     // function for reload datatable simulation
@@ -665,29 +670,29 @@
     }
 
     // function for check status display simulation
-    const checkDisplay = () =>{
-        if ($('#display').val() == 'simple') {
-            for (let index = 1; index < 5; index++) {
-                $('#chart_'+index).hide();
-            }
-            $('.simulation_table').hide();
-            $('.simple_table').show();
-        } else {
-            for (let index = 1; index < 5; index++) {
-                $('#chart_'+index).show();
-            }
-            $('.simulation_table').show();
-            $('.simple_table').hide();
-        }
-        reload_datatable_simulation();
-    }
+    // const checkDisplay = () =>{
+    //     if ($('#display').val() == 'simple') {
+    //         for (let index = 1; index < 5; index++) {
+    //             $('#chart_'+index).hide();
+    //         }
+    //         $('.simulation_table').hide();
+    //         $('.simple_table').show();
+    //     } else {
+    //         for (let index = 1; index < 5; index++) {
+    //             $('#chart_'+index).show();
+    //         }
+    //         $('.simulation_table').show();
+    //         $('.simple_table').hide();
+    //     }
+    //     reload_datatable_simulation();
+    // }
 
     var mode = KTThemeMode.getMode();
     $(document).ready(function(){
         $('#result_card').hide();
         $('#guide_card').hide();
         $('#simulation_card').hide();
-        checkDisplay();
+        // checkDisplay();
         onChangeSelect('{{ route("pond.volume") }}', $('#fish_type').val(), 'pond_volume', $('#seed_amount').val());
         onChangeSelect('{{ route("fish.count") }}', $('#fish_type').val(), 'total_fish_count', $('#seed_amount').val());
         getGraphData(getColorMode(mode));
@@ -725,9 +730,9 @@
     }
 
     // on change display
-    $('#display').on('change', function(){
-        checkDisplay();
-    });
+    // $('#display').on('change', function(){
+    //     checkDisplay();
+    // });
 
     // function get data when select2 changes
     function onChangeSelect(url, fish_id, name, seed_amount) {
